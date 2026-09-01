@@ -11,3 +11,4 @@ log
 *.map
 *.hex
 *.uf2
+*.bin
