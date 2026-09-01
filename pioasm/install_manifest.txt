@@ -1,0 +1,5 @@
+/home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/pioasm-install/pioasm/pioasm
+/home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/pioasm-install/pioasm/pioasmTargets.cmake
+/home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/pioasm-install/pioasm/pioasmTargets-release.cmake
+/home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/pioasm-install/pioasm/pioasmConfig.cmake
+/home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/pioasm-install/pioasm/pioasmConfigVersion.cmake
