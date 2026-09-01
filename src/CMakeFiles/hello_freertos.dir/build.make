@@ -69,19 +69,19 @@ include src/CMakeFiles/hello_freertos.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/hello_freertos.dir/flags.make
 
-src/CMakeFiles/hello_freertos.dir/blink.c.o: src/CMakeFiles/hello_freertos.dir/flags.make
-src/CMakeFiles/hello_freertos.dir/blink.c.o: src/blink.c
-src/CMakeFiles/hello_freertos.dir/blink.c.o: src/CMakeFiles/hello_freertos.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/CMakeFiles/hello_freertos.dir/blink.c.o"
-	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/hello_freertos.dir/blink.c.o -MF CMakeFiles/hello_freertos.dir/blink.c.o.d -o CMakeFiles/hello_freertos.dir/blink.c.o -c /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src/blink.c
+src/CMakeFiles/hello_freertos.dir/hello_freertos.c.o: src/CMakeFiles/hello_freertos.dir/flags.make
+src/CMakeFiles/hello_freertos.dir/hello_freertos.c.o: src/hello_freertos.c
+src/CMakeFiles/hello_freertos.dir/hello_freertos.c.o: src/CMakeFiles/hello_freertos.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/CMakeFiles/hello_freertos.dir/hello_freertos.c.o"
+	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/hello_freertos.dir/hello_freertos.c.o -MF CMakeFiles/hello_freertos.dir/hello_freertos.c.o.d -o CMakeFiles/hello_freertos.dir/hello_freertos.c.o -c /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src/hello_freertos.c
 
-src/CMakeFiles/hello_freertos.dir/blink.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/hello_freertos.dir/blink.c.i"
-	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src/blink.c > CMakeFiles/hello_freertos.dir/blink.c.i
+src/CMakeFiles/hello_freertos.dir/hello_freertos.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/hello_freertos.dir/hello_freertos.c.i"
+	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src/hello_freertos.c > CMakeFiles/hello_freertos.dir/hello_freertos.c.i
 
-src/CMakeFiles/hello_freertos.dir/blink.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/hello_freertos.dir/blink.c.s"
-	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src/blink.c -o CMakeFiles/hello_freertos.dir/blink.c.s
+src/CMakeFiles/hello_freertos.dir/hello_freertos.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/hello_freertos.dir/hello_freertos.c.s"
+	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos/src/hello_freertos.c -o CMakeFiles/hello_freertos.dir/hello_freertos.c.s
 
 src/CMakeFiles/hello_freertos.dir/home/vincent/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o: src/CMakeFiles/hello_freertos.dir/flags.make
 src/CMakeFiles/hello_freertos.dir/home/vincent/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o: /home/vincent/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
@@ -1669,7 +1669,7 @@ src/CMakeFiles/hello_freertos.dir/home/vincent/pico-sdk/src/rp2_common/pico_asyn
 
 # Object files for target hello_freertos
 hello_freertos_OBJECTS = \
-"CMakeFiles/hello_freertos.dir/blink.c.o" \
+"CMakeFiles/hello_freertos.dir/hello_freertos.c.o" \
 "CMakeFiles/hello_freertos.dir/home/vincent/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o" \
 "CMakeFiles/hello_freertos.dir/home/vincent/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o" \
 "CMakeFiles/hello_freertos.dir/home/vincent/pico-sdk/src/rp2040/pico_platform/platform.c.o" \
@@ -1788,7 +1788,7 @@ hello_freertos_OBJECTS = \
 # External object files for target hello_freertos
 hello_freertos_EXTERNAL_OBJECTS =
 
-src/hello_freertos.elf: src/CMakeFiles/hello_freertos.dir/blink.c.o
+src/hello_freertos.elf: src/CMakeFiles/hello_freertos.dir/hello_freertos.c.o
 src/hello_freertos.elf: src/CMakeFiles/hello_freertos.dir/home/vincent/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o
 src/hello_freertos.elf: src/CMakeFiles/hello_freertos.dir/home/vincent/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o
 src/hello_freertos.elf: src/CMakeFiles/hello_freertos.dir/home/vincent/pico-sdk/src/rp2040/pico_platform/platform.c.o

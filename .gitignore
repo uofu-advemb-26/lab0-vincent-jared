@@ -6,3 +6,8 @@ log
 *-asciinema
 *.pid
 *-profile
+*.dis
+*.elf
+*.map
+*.hex
+*.uf2

@@ -512,12 +512,20 @@ src/CMakeFiles/hello_freertos.dir/__/lib/freertos/timers.c.o: lib/freertos/timer
   /usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h \
   /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h
 
-src/CMakeFiles/hello_freertos.dir/blink.c.o: src/blink.c \
+src/CMakeFiles/hello_freertos.dir/hello_freertos.c.o: src/hello_freertos.c \
   generated/pico_base/pico/config_autogen.h \
   generated/pico_base/pico/version.h \
   include/FreeRTOSConfig.h \
   include/FreeRTOSConfig_examples_common.h \
+  lib/freertos/include/FreeRTOS.h \
+  lib/freertos/include/deprecated_definitions.h \
+  lib/freertos/include/list.h \
+  lib/freertos/include/mpu_wrappers.h \
+  lib/freertos/include/portable.h \
+  lib/freertos/include/projdefs.h \
+  lib/freertos/include/task.h \
   lib/freertos/portable/ThirdParty/GCC/RP2040/include/freertos_sdk_config.h \
+  lib/freertos/portable/ThirdParty/GCC/RP2040/include/portmacro.h \
   lib/freertos/portable/ThirdParty/GCC/RP2040/include/rp2040_config.h \
   /home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43.h \
   /home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_config.h \
@@ -530,6 +538,11 @@ src/CMakeFiles/hello_freertos.dir/blink.c.o: src/blink.c \
   /home/vincent/pico-sdk/src/common/pico_base_headers/include/pico/error.h \
   /home/vincent/pico-sdk/src/common/pico_base_headers/include/pico/types.h \
   /home/vincent/pico-sdk/src/common/pico_stdlib_headers/include/pico/stdlib.h \
+  /home/vincent/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
+  /home/vincent/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /home/vincent/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
+  /home/vincent/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+  /home/vincent/pico-sdk/src/common/pico_sync/include/pico/sync.h \
   /home/vincent/pico-sdk/src/common/pico_time/include/pico/time.h \
   /home/vincent/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
   /home/vincent/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
@@ -560,12 +573,15 @@ src/CMakeFiles/hello_freertos.dir/blink.c.o: src/blink.c \
   /home/vincent/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
   /home/vincent/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
   /home/vincent/pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h \
+  /home/vincent/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+  /home/vincent/pico-sdk/src/rp2_common/hardware_sync_spin_lock/include/hardware/sync/spin_lock.h \
   /home/vincent/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
   /home/vincent/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
   /home/vincent/pico-sdk/src/rp2_common/pico_async_context/include/pico/async_context.h \
   /home/vincent/pico-sdk/src/rp2_common/pico_cyw43_arch/include/pico/cyw43_arch.h \
   /home/vincent/pico-sdk/src/rp2_common/pico_cyw43_arch/include/pico/cyw43_arch/arch_threadsafe_background.h \
   /home/vincent/pico-sdk/src/rp2_common/pico_cyw43_driver/include/cyw43_configport.h \
+  /home/vincent/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h \
   /home/vincent/pico-sdk/src/rp2_common/pico_platform_common/include/pico/platform/common.h \
   /home/vincent/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h \
   /home/vincent/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h \
@@ -5780,9 +5796,11 @@ lib/freertos/include/semphr.h:
 
 /home/vincent/pico-sdk/src/common/pico_stdlib_headers/include/pico/stdlib.h:
 
+/home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_config.h:
+
 /home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_ll.h:
 
-/home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_config.h:
+/usr/include/newlib/sys/_locale.h:
 
 /home/vincent/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pll.h:
 
@@ -5874,8 +5892,6 @@ lib/freertos/portable/ThirdParty/GCC/RP2040/port.c:
 
 /home/vincent/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h:
 
-/usr/include/newlib/sys/_locale.h:
-
 /usr/include/newlib/strings.h:
 
 /usr/include/newlib/_newlib_version.h:
@@ -5925,6 +5941,8 @@ include/FreeRTOSConfig.h:
 /home/vincent/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h:
 
 /home/vincent/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h:
+
+src/hello_freertos.c:
 
 /home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43.h:
 
@@ -6119,12 +6137,6 @@ lib/freertos/list.c:
 /home/vincent/pico-sdk/src/rp2_common/pico_multicore/multicore.c:
 
 /home/vincent/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sysinfo.h:
-
-src/blink.c:
-
-/usr/include/newlib/machine/_time.h:
-
-/home/vincent/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pio.h:
 
 /home/vincent/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h:
 
@@ -6347,6 +6359,10 @@ lib/freertos/include/event_groups.h:
 /home/vincent/pico-sdk/src/common/pico_base_headers/include/pico.h:
 
 /home/vincent/pico-sdk/src/rp2_common/hardware_pio/pio.c:
+
+/usr/include/newlib/machine/_time.h:
+
+/home/vincent/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pio.h:
 
 /home/vincent/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio_instructions.h:
 

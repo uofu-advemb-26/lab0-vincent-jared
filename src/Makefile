@@ -384,29 +384,29 @@ __/lib/freertos/timers.c.s:
 	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hello_freertos.dir/build.make src/CMakeFiles/hello_freertos.dir/__/lib/freertos/timers.c.s
 .PHONY : __/lib/freertos/timers.c.s
 
-blink.o: blink.c.o
-.PHONY : blink.o
+hello_freertos.o: hello_freertos.c.o
+.PHONY : hello_freertos.o
 
 # target to build an object file
-blink.c.o:
-	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hello_freertos.dir/build.make src/CMakeFiles/hello_freertos.dir/blink.c.o
-.PHONY : blink.c.o
+hello_freertos.c.o:
+	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hello_freertos.dir/build.make src/CMakeFiles/hello_freertos.dir/hello_freertos.c.o
+.PHONY : hello_freertos.c.o
 
-blink.i: blink.c.i
-.PHONY : blink.i
+hello_freertos.i: hello_freertos.c.i
+.PHONY : hello_freertos.i
 
 # target to preprocess a source file
-blink.c.i:
-	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hello_freertos.dir/build.make src/CMakeFiles/hello_freertos.dir/blink.c.i
-.PHONY : blink.c.i
+hello_freertos.c.i:
+	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hello_freertos.dir/build.make src/CMakeFiles/hello_freertos.dir/hello_freertos.c.i
+.PHONY : hello_freertos.c.i
 
-blink.s: blink.c.s
-.PHONY : blink.s
+hello_freertos.s: hello_freertos.c.s
+.PHONY : hello_freertos.s
 
 # target to generate assembly for a file
-blink.c.s:
-	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hello_freertos.dir/build.make src/CMakeFiles/hello_freertos.dir/blink.c.s
-.PHONY : blink.c.s
+hello_freertos.c.s:
+	cd /home/vincent/Desktop/ECE6785-AdvEmb/ece6785-rtos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hello_freertos.dir/build.make src/CMakeFiles/hello_freertos.dir/hello_freertos.c.s
+.PHONY : hello_freertos.c.s
 
 home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.o: home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.o
 .PHONY : home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.o
@@ -2775,9 +2775,9 @@ help:
 	@echo "... __/lib/freertos/timers.o"
 	@echo "... __/lib/freertos/timers.i"
 	@echo "... __/lib/freertos/timers.s"
-	@echo "... blink.o"
-	@echo "... blink.i"
-	@echo "... blink.s"
+	@echo "... hello_freertos.o"
+	@echo "... hello_freertos.i"
+	@echo "... hello_freertos.s"
 	@echo "... home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.o"
 	@echo "... home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.i"
 	@echo "... home/vincent/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.s"
