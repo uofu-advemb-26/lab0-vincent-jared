@@ -12,3 +12,4 @@ log
 *.hex
 *.uf2
 *.bin
+CMakeCache.txt
