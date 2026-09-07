@@ -1,0 +1,114 @@
+diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+index b49db93..3f6c275 100644
+--- a/.github/workflows/main.yml
++++ b/.github/workflows/main.yml
+@@ -5,10 +5,11 @@ env:
+   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+   BUILD_TYPE: Release
+   PICO_SDK_PATH: /usr/local/share/pico/pico-sdk
+-  FREERTOS_KERNEL_PATH: /usr/local/share/pico/FreeRTOS-Kernel
++  FREERTOS_PATH: /usr/local/share/pico/FreeRTOS-Kernel
+   UNITY_PATH: /usr/local/share/pico/Unity
+   OPENOCD_PATH: /usr/share/openocd
+   PICO_TOOLCHAIN_PATH: /usr/bin
++  picotool_DIR: /usr/local/share/pico/picotool
+ 
+ jobs:
+   build:
+@@ -48,10 +49,11 @@ jobs:
+ 
+       - name: Flash
+         # This follows the convention of where we put tests, but it can be anything
+-        working-directory: ${{github.workspace}}/build/test
++        working-directory: ${{github.workspace}}
+         shell: bash
+         # Make sure to set the correct elf file
+-        run: openocd -s $OPENOCD_PATH -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "mytest.elf" verify reset exit'
++        run: cmake --build ./build --target openocd_test
++        # run: openocd -s $OPENOCD_PATH -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "mytest.elf" verify reset exit'
+       - name: Test
+         working-directory: ${{github.workspace}}
+         shell: bash
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6def811..94f9e4e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,9 +4,6 @@ if(WIN32)
+ else()
+     set(USERHOME $ENV{HOME})
+ endif()
+-set(sdkVersion 2.0.0)
+-set(toolchainVersion 13_2_Rel1)
+-set(picotoolVersion 2.0.0)
+ if (DEFINED PICO_SDK_PATH)
+ # Already defined, e.g. -D flag
+ elseif (DEFINED ENV{PICO_SDK_PATH})
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index cfdd06d..e10058b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -8,8 +8,8 @@ pico_set_program_version(hello_freertos "0.1")
+ 
+ # Modify the below lines to enable/disable output over UART/USB.
+ # These are mutually exclusive, only set one.
+-pico_enable_stdio_uart(hello_freertos 0)
+-pico_enable_stdio_usb(hello_freertos 1)
++pico_enable_stdio_uart(hello_freertos 1)
++pico_enable_stdio_usb(hello_freertos 0)
+ 
+ # Add the libraries to the build
+ target_link_libraries(hello_freertos PRIVATE
+@@ -35,5 +35,4 @@ find_program(OPENOCD openocd)
+ find_program(PICOTOOL picotool)
+ 
+ add_custom_target(flash ${PICOTOOL} load -f $<TARGET_FILE:hello_freertos> DEPENDS hello_freertos)
+-
+-add_custom_target(openocd_flash ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:hello_freertos>" verify reset exit' DEPENDS hello_freertos)
++add_custom_target(openocd_flash ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000' -c program "$<TARGET_FILE:hello_freertos>" verify reset exit' DEPENDS hello_freertos)
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 471f377..cab55e8 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -17,8 +17,8 @@ endif()
+ 
+ # Modify the below lines to enable/disable output over UART/USB.
+ # These are mutually exclusive, only set one.
+-pico_enable_stdio_uart(mytest 0)
+-pico_enable_stdio_usb(mytest 1)
++pico_enable_stdio_uart(mytest 1)
++pico_enable_stdio_usb(mytest 0)
+ 
+ # This will speed up the simulation, since data won't be copied from the flash controller.
+ # It does make the binary non-persistent on a real microcontroller.
+@@ -47,4 +47,5 @@ find_program(OPENOCD openocd)
+ find_program(PICOTOOL picotool)
+ 
+ add_custom_target(flash_test ${PICOTOOL} load -f $<TARGET_FILE:mytest> DEPENDS mytest)
+-add_custom_target(openocd_test ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:mytest>" verify reset exit' DEPENDS mytest)
++add_custom_target(openocd_test ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000' -c 'program "$<TARGET_FILE:mytest>" verify reset exit' DEPENDS mytest)
++
+diff --git a/test/test.c b/test/test.c
+index f2a8e1b..182b5cd 100644
+--- a/test/test.c
++++ b/test/test.c
+@@ -25,11 +25,13 @@ void test_multiplication(void)
+ int main (void)
+ {
+     stdio_init_all();
+-    sleep_ms(5000); // Give time for TTY to attach.
+-    printf("Start tests\n");
+-    UNITY_BEGIN();
+-    RUN_TEST(test_variable_assignment);
+-    RUN_TEST(test_multiplication);
+-    sleep_ms(5000);
+-    return UNITY_END();
++    while (1) {
++        sleep_ms(5000); // Give time for TTY to attach.
++        printf("Start tests\n");
++        UNITY_BEGIN();
++        RUN_TEST(test_variable_assignment);
++        RUN_TEST(test_multiplication);
++        sleep_ms(5000);
++        UNITY_END();
++    }
+ }
